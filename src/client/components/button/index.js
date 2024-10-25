@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 /**
  * Reusable Button Component
  *
@@ -15,8 +14,8 @@ import PropTypes from "prop-types";
  */
 const ReusableButton = ({
   buttonText = "button",
-  width = "10px",
-  height = "10px",
+  width = "auto",
+  height = "auto",
 }) => {
   const buttonStyle = {
     width: width,
@@ -26,8 +25,9 @@ const ReusableButton = ({
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
-		fontSize: "16px",
-		textAlign: "center"
+    fontSize: "12px",
+    textAlign: "center",
+    margin: "5px",
   };
 
   return <button style={buttonStyle}>{buttonText}</button>;

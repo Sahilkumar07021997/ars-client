@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import "../assets/styles/App.css";
-import DemoCharts from "./scenes/demo-charts/DemoCharts";
+import DemoCharts from "./scenes/console/tabs/kpis/demo-charts/DemoCharts";
 import Console from "./scenes/console/Console";
 import { Routes, Route, Navigate } from "react-router-dom";
 /**

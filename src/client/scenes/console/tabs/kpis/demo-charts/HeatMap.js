@@ -1,5 +1,5 @@
 import React from "react";
-import VegaLiteChart from "../../components/vega-lite";
+import VegaLiteChart from "../../../../../components/vega-lite";
 import {HeatMapData } from "./chart-constants";
 
 // const heatMapData = RandomHeatMapData([2023]);

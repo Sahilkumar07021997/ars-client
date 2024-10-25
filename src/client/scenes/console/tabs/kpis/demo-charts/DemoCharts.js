@@ -1,5 +1,5 @@
 import React from "react";
-import VegaLiteChart from "../../components/vega-lite";
+import VegaLiteChart from "../../../../../components/vega-lite";
 import {
   barData,
   lineData,
@@ -112,18 +112,18 @@ const DemoCharts = () => {
     <div className="demo-charts-grid">
       <div className="demo-charts-item">
         <h2 className="demo-charts-item-header">Bar Chart</h2>
-        <VegaLiteChart spec={barChartSpec} data={barData} width={400} />
+        <VegaLiteChart spec={barChartSpec} data={barData} width={650} height={210} />
       </div>
       <div className="demo-charts-item">
         <h2 className="demo-charts-item-header">Line Chart</h2>
-        <VegaLiteChart spec={lineChartSpec} data={lineData} width={400} />
+        <VegaLiteChart spec={lineChartSpec} data={lineData} width={650} height={210} />
       </div>
       <div className="demo-charts-item">
         <h2 className="demo-charts-item-header">Multi Bar Chart</h2>
         <VegaLiteChart
           spec={multiBarChartSpec}
           data={multiBarData}
-          width={400}
+          width={650} height={210}
         />
       </div>
       <div className="demo-charts-item">
@@ -133,7 +133,7 @@ const DemoCharts = () => {
         <VegaLiteChart
           spec={multiLineChartSpec}
           data={multiLineData}
-          width={400}
+          width={650} height={210}
         />
       </div>
     </div>
