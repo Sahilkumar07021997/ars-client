@@ -1,0 +1,230 @@
+.App {
+  text-align: center;
+}
+
+.console {
+  h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+  }
+  .button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #ff4c3b;
+  }
+  .console-toolbar {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #343148ff;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    .console-header {
+      flex-grow: 2;
+      .header-logo {
+        margin-right: 20px;
+        font-size: 2rem;
+      }
+    }
+  }
+  .console-content-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    h2 {
+      font-size: 1.3em;
+      text-align: left;
+    }
+    .tab-container {
+      width: 90%;
+      height: 80vh;
+      h2 {
+        font-size: 1.3em;
+        text-align: left;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        grid-template-rows: 1fr 1fr; /* Two rows */
+        gap: 10px; /* Small gap between the sections */
+        height: 70vh;
+        padding: 0px;
+        /* border: 2px solid black; Outer border for the grid container */
+        .grid-item {
+          padding: 20px;
+          border: 2px solid #343148ff; /* Visible black border around each grid item */
+          background-color: #f9f9f9;
+          display: flex;
+          flex-direction: column;
+          justify-content: center; /* Center content vertically */
+          align-items: center; /* Center content horizontally */
+          h3 {
+            margin: 0 0 10px 0;
+            text-align: center; /* Center subheadings */
+            color: #343148ff;
+          }
+          p {
+            margin: 0;
+            text-align: center; /* Center the paragraph text */
+            color: #343148ff;
+          }
+        }
+        .grid-item:hover {
+          background-color: rgb(173, 170, 197);
+          scale: 1.01;
+        }
+        .grid-item:active {
+          scale: 0.99;
+        }
+      }
+    }
+  }
+  .console-footer {
+    margin-top: 10px;
+    background-color: #343148;
+    color: white;
+    padding: 5px 0;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    .console-footer-contacts {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      a {
+        margin: 0 5px;
+      }
+    }
+    p {
+      margin: 3px 0;
+    }
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
+
+.coming-soon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+
+.demo-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-rows: repeat(2, 1fr); /* Two rows */
+  gap: 10px;
+  flex-grow: 1; /* Make the grid grow to fill available space */
+  padding: 10px;
+  /* Optional border to visualize the grid */
+  /* border: 1px solid #343148FF; */
+  .demo-charts-item {
+    border: 1px solid #343148ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    .demo-charts-item-header {
+      font-size: 1.3em;
+      margin: 0px;
+      margin-bottom: 10px;
+      color: #343148ff;
+    }
+  }
+}
+
+.heatmap {
+  h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+  }
+  .heatmap-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+}
+
+.users {
+  h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+  }
+
+  &.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #ff6f61;
+      color: white;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff4c3b;
+    }
+  }
+}
+
+.drawer-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Fill the height of the parent drawer */
+  color: white;
+
+  .drawer-list-item-primary,
+  .drawer-list-item-secondary {
+    margin-top: 60px;
+    border-top: 5px solid white;
+    font-size: 25px; /* Increase font size */
+    font-weight: bolder; /* Make text bold */
+  }
+
+  .drawer-list-item-secondary {
+    margin-top: auto; /* Push the secondary list to the bottom */
+  }
+}
