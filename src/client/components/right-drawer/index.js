@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {
   Box,
   Drawer,
-  Button,
   List,
-  Divider,
   ListItem,
   ListItemButton,
   ListItemIcon,
@@ -34,7 +32,7 @@ const LeftDrawer = (props) => {
           }}
         >
           <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
-          <ListItemText sx={{ fontSize: 25 }} primary={item.text} />
+          <ListItemText sx={{ fontSize: 15 }} primary={item.text} />
         </ListItemButton>
       </ListItem>
     ));
@@ -42,7 +40,7 @@ const LeftDrawer = (props) => {
   const list = (anchor) => (
     <Box
       sx={{
-        width: anchor === "top" || anchor === "bottom" ? "auto" : 350,
+        width: anchor === "top" || anchor === "bottom" ? "auto" : 300,
         backgroundColor: "#343148FF",
         height: "100vh",
       }}

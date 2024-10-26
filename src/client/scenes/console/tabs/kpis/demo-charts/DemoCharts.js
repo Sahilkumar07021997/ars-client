@@ -6,6 +6,7 @@ import {
   multiBarData,
   multiLineData,
 } from "./chart-constants";
+import AutoSizer from "react-virtualized-auto-sizer";
 
 const barChartSpec = {
   mark: "bar",
@@ -111,30 +112,66 @@ const DemoCharts = () => {
   return (
     <div className="demo-charts-grid">
       <div className="demo-charts-item">
-        <h2 className="demo-charts-item-header">Bar Chart</h2>
-        <VegaLiteChart spec={barChartSpec} data={barData} width={650} height={210} />
+        <div className="demo-charts-item-header">Bar Chart</div>
+        <div className="demo-charts-item-chart-content">
+          <AutoSizer>
+            {({ width, height }) => (
+              <VegaLiteChart
+                spec={barChartSpec}
+                data={barData}
+                width={width}
+                height={height}
+              />
+            )}
+          </AutoSizer>
+        </div>
       </div>
       <div className="demo-charts-item">
-        <h2 className="demo-charts-item-header">Line Chart</h2>
-        <VegaLiteChart spec={lineChartSpec} data={lineData} width={650} height={210} />
+        <div className="demo-charts-item-header">Line Chart</div>
+        <div className="demo-charts-item-chart-content">
+          <AutoSizer>
+            {({ width, height }) => (
+              <VegaLiteChart
+                spec={lineChartSpec}
+                data={lineData}
+                width={width}
+                height={height}
+              />
+            )}
+          </AutoSizer>
+        </div>
       </div>
       <div className="demo-charts-item">
-        <h2 className="demo-charts-item-header">Multi Bar Chart</h2>
-        <VegaLiteChart
-          spec={multiBarChartSpec}
-          data={multiBarData}
-          width={650} height={210}
-        />
+        <div className="demo-charts-item-header">Multi Bar Chart</div>
+        <div className="demo-charts-item-chart-content">
+          <AutoSizer>
+            {({ width, height }) => (
+              <VegaLiteChart
+                spec={multiBarChartSpec}
+                data={multiBarData}
+                width={width - 80}
+                height={height}
+              />
+            )}
+          </AutoSizer>
+        </div>
       </div>
       <div className="demo-charts-item">
-        <h2 className="demo-charts-item-header">
+        <div className="demo-charts-item-header">
           Interactive Multi Line Chart
-        </h2>
-        <VegaLiteChart
-          spec={multiLineChartSpec}
-          data={multiLineData}
-          width={650} height={210}
-        />
+        </div>
+        <div className="demo-charts-item-chart-content">
+          <AutoSizer>
+            {({ width, height }) => (
+              <VegaLiteChart
+                spec={multiLineChartSpec}
+                data={multiLineData}
+                width={width - 80}
+                height={height}
+              />
+            )}
+          </AutoSizer>
+        </div>
       </div>
     </div>
   );

@@ -21,11 +21,12 @@ const ReusableButton = ({
     width: width,
     height: height,
     backgroundColor: "#343148ff",
-    color: "white",
+    color: "#D7C49EFF",
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
     fontSize: "12px",
+    fontWeight: "bold",
     textAlign: "center",
     margin: "5px",
   };

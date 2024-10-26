@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import DemoCharts from "./demo-charts/DemoCharts";
+import ReusableButton from "../../../../components/button";
+import ReusableDropdown from "../../../../components/drop-down";
+import { YearOptions } from "../../../../../constants/tab-toolbar-constants";
 /**
  * Kpis Component
  *
@@ -12,9 +15,26 @@ import DemoCharts from "./demo-charts/DemoCharts";
  */
 const Kpis = (props) => {
   const { tabDisplay } = useSelector((state) => state.console);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleSelect = (value) => {
+    setSelectedOption(value);
+    console.log("Selected Option:", value);
+  };
+
   return (
     <div className="kpis-container">
-      <h2>{tabDisplay}</h2>
+      <h2>
+        {tabDisplay}:&nbsp;{selectedOption}
+      </h2>
+      <div className="exec-summary-container-toolbar">
+        <ReusableDropdown
+          options={YearOptions}
+          onSelect={handleSelect}
+          disabledText={"select year..."}
+        />
+        <ReusableButton buttonText="Load" width="auto" />
+      </div>
       <DemoCharts />
     </div>
   );

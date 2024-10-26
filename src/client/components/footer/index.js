@@ -17,28 +17,18 @@ import {
 const Footer = (props) => {
   return (
     <div className="console-footer">
-      <p>
-        © {new Date().getFullYear()} All rights reserved to Sahil Kumar{" "}
-        <sup>®</sup>
-      </p>
       <div className="console-footer-contacts">
-        <div className="console-footer-email">
-          <EmailOutlined fontSize="small" sx={{ marginTop: "10px" }} />
-          &nbsp;Email: sahilkumardhiman07@gmail.com
-        </div>
-        &nbsp;|&nbsp;
         <div>
-          <PhoneOutlined fontSize="small" />
-          &nbsp;Phone: +91 9646961419
-        </div>
-        &nbsp;|&nbsp;
-        <div className="console-footer-links">
+          <EmailOutlined fontSize="extra-small" sx={{ marginTop: "10px" }} />
+          &nbsp;Email: sahilkumardhiman07@gmail.com &nbsp;|&nbsp;
+          <PhoneOutlined fontSize="extra-small" />
+          &nbsp;Phone: +91 9646961419&nbsp;|&nbsp;
           <a
             href="https://www.linkedin.com/in/yourprofile"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <LinkedIn fontSize="small" />
+            <LinkedIn fontSize="extra-small" />
           </a>
           &nbsp;|&nbsp;
           <a
@@ -46,10 +36,15 @@ const Footer = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Instagram fontSize="small" />
+            <Instagram fontSize="extra-small" />
           </a>
         </div>
       </div>
+      <p>
+        © {new Date().getFullYear()} All rights reserved to Sahil Kumar{" "}
+        <sup>®</sup>
+      </p>
+
       <p>
         <a
           href="/privacy-policy"

@@ -12,6 +12,7 @@ import {
   ArrowDownwardOutlined,
   ArrowUpwardOutlined,
 } from "@mui/icons-material";
+import { ColumnConfig } from "../../../constants/table-constants";
 
 const chance = new Chance(42);
 
@@ -23,12 +24,13 @@ function createData(id) {
     age: chance.age(),
     phone: chance.phone(),
     state: chance.state({ full: true }),
+    january: chance.dollar(),
   };
 }
 
 const columns = [
   {
-    width: 30,
+    width: 5,
     label: "Sno.",
     dataKey: "id",
     numeric: true,
@@ -47,7 +49,7 @@ const columns = [
     width: 50,
     label: "Age",
     dataKey: "age",
-    numeric: true,
+    money: true,
   },
   {
     width: 110,
@@ -117,7 +119,7 @@ export default function ReactVirtualizedTable() {
 
   const fixedHeaderContent = () => (
     <TableRow>
-      {columns.map((column) => (
+      {ColumnConfig.map((column) => (
         <TableCell
           key={column.dataKey}
           align={column.numeric || false ? "right" : "left"}
@@ -125,13 +127,14 @@ export default function ReactVirtualizedTable() {
           sx={{
             backgroundColor: "background.paper",
             color: "black",
-            fontSize: 18,
+            fontSize: 12,
             fontWeight: "bold",
             borderRight: "2px solid #343148FF", // Vertical lines between body cells
             borderLeft: "2px solid #343148FF",
             borderTop: "2px solid #343148FF",
             alignItems: "center",
-            cursor: "pointer"
+            cursor: "pointer",
+            textWrap: "pretty",
           }}
           onClick={() => handleSort(column.dataKey)}
         >
@@ -156,18 +159,18 @@ export default function ReactVirtualizedTable() {
 
   const rowContent = (_index, row) => (
     <React.Fragment>
-      {columns.map((column) => (
+      {ColumnConfig.map((column) => (
         <TableCell
           key={column.dataKey}
           align={column.numeric || false ? "right" : "left"}
           sx={{
-            fontSize: 13,
+            fontSize: 12,
             fontWeight: "bold",
             color: "#D7C49EFF",
             borderRight: "2px solid #D7C49EFF", // Vertical lines between body cells
           }}
         >
-          {row[column.dataKey]}
+          {column.money ? "$" + row[column.dataKey] : row[column.dataKey]}
         </TableCell>
       ))}
     </React.Fragment>

@@ -26,9 +26,10 @@ const ReusableDropdown = ({
   const dropdownStyle = {
     padding: "10px",
     fontSize: "12px",
-    backgroundColor: "#343148ff",
+    fontWeight: "bold",
+    backgroundColor: "rgb(173, 170, 197)",
     color: "white",
-    border: "none",
+    border: "1px solid #343148ff",
     borderRadius: "5px",
     cursor: "pointer",
     width: width, // Adjust width as needed
