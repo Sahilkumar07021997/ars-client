@@ -8,8 +8,6 @@ import { updateTab } from "../../../reducers/modules/console/consoleSlice";
 import TabWrapper from "./tabs";
 import _ from "lodash";
 import Footer from "../../components/footer";
-import { Routes, Route, Navigate } from "react-router-dom";
-import ComingSoon from "../../components/coming-soon";
 /**
  * Console Component
  *

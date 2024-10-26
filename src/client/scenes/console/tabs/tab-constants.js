@@ -9,7 +9,7 @@ import {
   AccountBalance as AccountBalanceIcon,
   SmartToy as SmartToyIcon,
   LinkedIn as LinkedInIcon,
-  SmartScreenOutlined as SmartScreenOutlined,
+  SmartScreenOutlined
 } from "@mui/icons-material";
 /**
  * RouteConfig Object

@@ -26,6 +26,10 @@ const ExecSummary = (props) => {
   });
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadedYearMonth, setLoadedYearMonth] = useState({
+    year: null,
+    month: null,
+  });
 
   const handleSelect = (type, value) => {
     switch (type) {
@@ -41,6 +45,7 @@ const ExecSummary = (props) => {
   };
 
   const onClickHandler = () => {
+    setLoadedYearMonth(selectedOption);
     setLoading(true);
     setLoaded(false); // Reset loaded state when new load starts
     setTimeout(() => {
@@ -52,7 +57,16 @@ const ExecSummary = (props) => {
   return (
     <div className="exec-summary-container">
       <h2>
-        {tabDisplay}:&nbsp;{selectedOption.month}&nbsp;{selectedOption.year}
+        {tabDisplay.toUpperCase()}:&nbsp;
+        {loadedYearMonth.month && loadedYearMonth.year ? (
+          `${loadedYearMonth.month} ${loadedYearMonth.year}`
+        ) : (
+          <span
+            style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em" }}
+          >
+            Please select a year, month and load!
+          </span>
+        )}
       </h2>
       <div className="container-toolbar">
         <ReusableDropdown

@@ -1,6 +1,5 @@
 import React from "react";
 import { RouteConfig } from "./tab-constants";
-import { useSelector } from "react-redux";
 /**
  * TabWrapper Component
  *

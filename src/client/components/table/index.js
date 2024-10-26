@@ -28,41 +28,6 @@ function createData(id) {
   };
 }
 
-const columns = [
-  {
-    width: 5,
-    label: "Sno.",
-    dataKey: "id",
-    numeric: true,
-  },
-  {
-    width: 100,
-    label: "First Name",
-    dataKey: "firstName",
-  },
-  {
-    width: 100,
-    label: "Last Name",
-    dataKey: "lastName",
-  },
-  {
-    width: 50,
-    label: "Age",
-    dataKey: "age",
-    money: true,
-  },
-  {
-    width: 110,
-    label: "State",
-    dataKey: "state",
-  },
-  {
-    width: 130,
-    label: "Phone Number",
-    dataKey: "phone",
-  },
-];
-
 const initialRows = Array.from({ length: 200 }, (_, index) =>
   createData(index)
 );

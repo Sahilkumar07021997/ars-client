@@ -19,6 +19,7 @@ const Balancesheet = (props) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadedYear, setLoadedYear] = useState(null);
 
   const handleSelect = (value) => {
     setSelectedOption(value);
@@ -26,6 +27,7 @@ const Balancesheet = (props) => {
   };
 
   const onClickHandler = () => {
+    setLoadedYear(selectedOption);
     setLoading(true);
     setLoaded(false); // Reset loaded state when new load starts
     setTimeout(() => {
@@ -37,7 +39,16 @@ const Balancesheet = (props) => {
   return (
     <div className="balancesheet-container">
       <h2>
-        {tabDisplay}:&nbsp;{selectedOption || "Please select a year!"}
+        {tabDisplay.toUpperCase()}:&nbsp;
+        {loadedYear ? (
+          loadedYear
+        ) : (
+          <span
+            style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em" }}
+          >
+            Please select a year and load!
+          </span>
+        )}
       </h2>
       <div className="container-toolbar">
         <ReusableDropdown

@@ -20,6 +20,7 @@ const Kpis = (props) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [loadedYear, setLoadedYear] = useState(null);
 
   const handleSelect = (value) => {
     setSelectedOption(value);
@@ -27,6 +28,7 @@ const Kpis = (props) => {
   };
 
   const onClickHandler = () => {
+    setLoadedYear(selectedOption);
     setLoading(true);
     setLoaded(false); // Reset loaded state when loading starts
     setTimeout(() => {
@@ -38,7 +40,16 @@ const Kpis = (props) => {
   return (
     <div className="kpis-container">
       <h2>
-        {tabDisplay}:&nbsp;{selectedOption || "Please select a year!"}
+        {tabDisplay.toUpperCase()}:&nbsp;
+        {loadedYear ? (
+          loadedYear
+        ) : (
+          <span
+            style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em" }}
+          >
+            Please select a year and load!
+          </span>
+        )}
       </h2>
       <div className="container-toolbar">
         <ReusableDropdown
