@@ -8,7 +8,7 @@
  */
 export const ColumnConfig = [
   {
-    width: 5,
+    width: 20,
     label: "Sno.",
     dataKey: "1000",
     dataKeyName: "sno",

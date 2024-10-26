@@ -149,7 +149,7 @@ const DemoCharts = () => {
               <VegaLiteChart
                 spec={multiBarChartSpec}
                 data={multiBarData}
-                width={width - 80}
+                width={width - 100}
                 height={height}
               />
             )}

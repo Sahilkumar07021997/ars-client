@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import DemoCharts from "./demo-charts/DemoCharts";
 import ReusableButton from "../../../../components/button";
 import ReusableDropdown from "../../../../components/drop-down";
+import LoaderSpinner from "../../../../components/loading-spinner";
 import { YearOptions } from "../../../../../constants/tab-toolbar-constants";
+
 /**
  * Kpis Component
  *
@@ -16,26 +18,45 @@ import { YearOptions } from "../../../../../constants/tab-toolbar-constants";
 const Kpis = (props) => {
   const { tabDisplay } = useSelector((state) => state.console);
   const [selectedOption, setSelectedOption] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const handleSelect = (value) => {
     setSelectedOption(value);
-    console.log("Selected Option:", value);
+    setLoaded(false); // Reset loaded state if a new selection is made
+  };
+
+  const onClickHandler = () => {
+    setLoading(true);
+    setLoaded(false); // Reset loaded state when loading starts
+    setTimeout(() => {
+      setLoading(false);
+      setLoaded(true);
+    }, 3000); // Simulate loading time
   };
 
   return (
     <div className="kpis-container">
       <h2>
-        {tabDisplay}:&nbsp;{selectedOption}
+        {tabDisplay}:&nbsp;{selectedOption || "Please select a year!"}
       </h2>
-      <div className="exec-summary-container-toolbar">
+      <div className="container-toolbar">
         <ReusableDropdown
           options={YearOptions}
           onSelect={handleSelect}
-          disabledText={"select year..."}
+          disabledText={"Select year..."}
         />
-        <ReusableButton buttonText="Load" width="auto" />
+        <ReusableButton
+          buttonText="Load"
+          width="auto"
+          height="30px"
+          disabled={!selectedOption}
+          onClick={onClickHandler}
+        />
       </div>
-      <DemoCharts />
+      <div className="kpis-content">
+        {loading ? <LoaderSpinner /> : loaded ? <DemoCharts /> : null}
+      </div>
     </div>
   );
 };

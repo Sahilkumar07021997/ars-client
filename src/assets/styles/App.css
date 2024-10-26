@@ -1,12 +1,23 @@
 html {
   scrollbar-width: none !important;
-  font-size: small !important;;
+  font-size: small !important;
 }
 
 .App {
   text-align: center;
 }
-
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------COMMON BUTTON----------------- */
+/* ------------------------------------------------------------------------------------------------ */
+.common-button:active {
+  scale: 0.99;
+}
+.common-button:disabled:active {
+  scale: none; /* or you can set it to 1 to keep it the same size */
+}
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------CONSOLE-------------------------*/
+/* ------------------------------------------------------------------------------------------------ */
 .console {
   h1 {
     font-family: Arial, Helvetica, sans-serif;
@@ -138,7 +149,9 @@ html {
     }
   }
 }
-
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------COMING SOON----------------- */
+/* ------------------------------------------------------------------------------------------------ */
 .coming-soon-container {
   display: flex;
   justify-content: center;
@@ -150,7 +163,14 @@ html {
     text-transform: uppercase;
   }
 }
-
+/* display: flex;
+    justify-content: center;
+    height: 70vh;
+    align-items: center;
+} */
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------DEMO CHARTS GRID----------------- */
+/* ------------------------------------------------------------------------------------------------ */
 .demo-charts-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
@@ -177,7 +197,9 @@ html {
     }
   }
 }
-
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------KPIS CONTAINER----------------- */
+/* ------------------------------------------------------------------------------------------------ */
 .kpis-container {
   width: 100%;
   height: 100%;
@@ -204,7 +226,7 @@ html {
   }
 }
 
-.heatmap {
+/* .heatmap {
   h1 {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -216,37 +238,10 @@ html {
     align-items: center;
     margin-top: 50px;
   }
-}
-
-.users {
-  h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: center;
-  }
-
-  &.button-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    button {
-      padding: 10px 20px;
-      border: none;
-      background-color: #ff6f61;
-      color: white;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #ff4c3b;
-    }
-  }
-}
-
+} */
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------DRAWER LIST----------------- */
+/* ------------------------------------------------------------------------------------------------ */
 .drawer-list-container {
   display: flex;
   flex-direction: column;
@@ -265,4 +260,44 @@ html {
   .drawer-list-item-secondary {
     margin-top: auto; /* Push the secondary list to the bottom */
   }
+}
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------INCOME STATEMENT CONTENT----------------- */
+/* ------------------------------------------------------------------------------------------------ */
+.income-statement-content {
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  margin-top: 0px;
+  align-items: center;
+}
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------BALANCESHEET CONTENT----------------- */
+/* ------------------------------------------------------------------------------------------------ */
+.balancesheet-content {
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  margin-top: 0px;
+  align-items: center;
+}
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------KPIS CONTENT----------------- */
+/* ------------------------------------------------------------------------------------------------ */
+.kpis-content {
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  margin-top: 0px;
+  align-items: center;
+}
+/* ------------------------------------------------------------------------------------------------ */
+/* ---------------EXEC SUMMARY CONTENT----------------- */
+/* ------------------------------------------------------------------------------------------------ */
+.exec-summary-content {
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  margin-top: 0px;
+  align-items: center;
 }

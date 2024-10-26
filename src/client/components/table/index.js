@@ -134,7 +134,7 @@ export default function ReactVirtualizedTable() {
             borderTop: "2px solid #343148FF",
             alignItems: "center",
             cursor: "pointer",
-            textWrap: "pretty",
+            textWrap: "wrap",
           }}
           onClick={() => handleSort(column.dataKey)}
         >

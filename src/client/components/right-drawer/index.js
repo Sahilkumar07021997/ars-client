@@ -64,6 +64,7 @@ const LeftDrawer = (props) => {
       <ReorderRoundedIcon
         fontSize={"large"}
         onMouseEnter={toggleDrawer("left", true)}
+        onClick={toggleDrawer("left", true)}
       ></ReorderRoundedIcon>
       <Drawer
         anchor="left"

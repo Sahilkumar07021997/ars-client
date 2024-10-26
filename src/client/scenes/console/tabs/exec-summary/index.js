@@ -7,6 +7,8 @@ import {
   MonthOptions,
   YearOptions,
 } from "../../../../../constants/tab-toolbar-constants";
+import LoaderSpinner from "../../../../components/loading-spinner";
+
 /**
  * ExecSummary Component
  *
@@ -18,40 +20,64 @@ import {
  */
 const ExecSummary = (props) => {
   const { tabDisplay } = useSelector((state) => state.console);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState({
+    year: null,
+    month: null,
+  });
+  const [loaded, setLoaded] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSelect = (type, value) => {
     switch (type) {
       case DropDownType.MonthOptionType:
-        setSelectedOption(value);
-        console.log("Selected Month:", value);
+        setSelectedOption((prevState) => ({ ...prevState, month: value }));
         break;
       case DropDownType.YearOptionType:
-        setSelectedOption(value);
-        console.log("Selected Year:", value);
+        setSelectedOption((prevState) => ({ ...prevState, year: value }));
         break;
       default:
-        return null;
+        return;
     }
+  };
+
+  const onClickHandler = () => {
+    setLoading(true);
+    setLoaded(false); // Reset loaded state when new load starts
+    setTimeout(() => {
+      setLoading(false);
+      setLoaded(true);
+    }, 5000); // Simulating loading time
   };
 
   return (
     <div className="exec-summary-container">
-      <h2>{tabDisplay}</h2>
-      <div className="exec-summary-container-toolbar">
+      <h2>
+        {tabDisplay}:&nbsp;{selectedOption.month}&nbsp;{selectedOption.year}
+      </h2>
+      <div className="container-toolbar">
         <ReusableDropdown
           options={YearOptions}
-          onSelect={() => handleSelect(DropDownType.YearOptionType)}
-          disabledText={"select year..."}
+          onSelect={(value) => handleSelect(DropDownType.YearOptionType, value)}
+          disabledText={"Select year..."}
         />
         <ReusableDropdown
           options={MonthOptions}
-          onSelect={() => handleSelect(DropDownType.YearOptionType)}
-          disabledText={"select month..."}
+          onSelect={(value) =>
+            handleSelect(DropDownType.MonthOptionType, value)
+          }
+          disabledText={"Select month..."}
         />
-        <ReusableButton buttonText="Generate" width="auto" />
+        <ReusableButton
+          buttonText="Generate"
+          width="auto"
+          height="30px"
+          disabled={!(selectedOption.month && selectedOption.year)}
+          onClick={onClickHandler}
+        />
       </div>
-      {selectedOption && <p>You selected: {selectedOption}</p>}
+      <div className="exec-summary-content">
+        {loading ? <LoaderSpinner /> : loaded ? <p>Content loaded!!</p> : null}
+      </div>
     </div>
   );
 };
