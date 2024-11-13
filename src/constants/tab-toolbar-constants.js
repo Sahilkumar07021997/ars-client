@@ -6,9 +6,7 @@
  *
  * @returns {Array<number>} Array of years from 2014 to 2024.
  */
-export const YearOptions = [
-  2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
-];
+export const YearOptions = [2022, 2023, 2024];
 /**
  * Month Names
  *

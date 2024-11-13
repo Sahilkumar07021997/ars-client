@@ -14,17 +14,25 @@ import {
 } from "@mui/icons-material";
 import { ColumnConfig } from "../../../constants/table-constants";
 
-const chance = new Chance(42);
+const chance = new Chance(100);
 
 function createData(id) {
   return {
-    id,
-    firstName: chance.first(),
-    lastName: chance.last(),
-    age: chance.age(),
-    phone: chance.phone(),
-    state: chance.state({ full: true }),
+    sno: id,
+    lineItemCategory: `Category_${chance.letter()}`,
+    lineItemName: `Income_Name__${chance.letter()}`,
     january: chance.dollar(),
+    february: chance.dollar(),
+    march: chance.dollar(),
+    april: chance.dollar(),
+    may: chance.dollar(),
+    june: chance.dollar(),
+    july: chance.dollar(),
+    august: chance.dollar(),
+    september: chance.dollar(),
+    october: chance.dollar(),
+    november: chance.dollar(),
+    december: chance.dollar(),
   };
 }
 
@@ -55,8 +63,8 @@ const VirtuosoTableComponents = {
   )),
 };
 
-export default function ReactVirtualizedTable() {
-  const [rows, setRows] = React.useState(initialRows);
+export default function ReactVirtualizedTable(props) {
+  const [rows, setRows] = React.useState(props.rows);
   const [sortConfig, setSortConfig] = React.useState({
     key: null,
     direction: null,
@@ -86,7 +94,7 @@ export default function ReactVirtualizedTable() {
     <TableRow>
       {ColumnConfig.map((column) => (
         <TableCell
-          key={column.dataKey}
+          key={column.dataKeyName}
           align={column.numeric || false ? "right" : "left"}
           style={{ width: column.width }}
           sx={{
@@ -101,10 +109,10 @@ export default function ReactVirtualizedTable() {
             cursor: "pointer",
             textWrap: "wrap",
           }}
-          onClick={() => handleSort(column.dataKey)}
+          onClick={() => handleSort(column.dataKeyName)}
         >
           {column.label}
-          {sortConfig.key === column.dataKey ? (
+          {sortConfig.key === column.dataKeyName ? (
             sortConfig.direction === "ascending" ? (
               <span>
                 &nbsp;
@@ -124,9 +132,9 @@ export default function ReactVirtualizedTable() {
 
   const rowContent = (_index, row) => (
     <React.Fragment>
-      {ColumnConfig.map((column) => (
+      {ColumnConfig.map((column, idx) => (
         <TableCell
-          key={column.dataKey}
+          key={column.dataKeyName}
           align={column.numeric || false ? "right" : "left"}
           sx={{
             fontSize: 12,
@@ -135,12 +143,12 @@ export default function ReactVirtualizedTable() {
             borderRight: "2px solid #D7C49EFF", // Vertical lines between body cells
           }}
         >
-          {column.money ? "$" + row[column.dataKey] : row[column.dataKey]}
+          {row[column.dataKeyName]}
         </TableCell>
       ))}
     </React.Fragment>
   );
-
+console.log(rows);
   return (
     <Paper
       style={{ height: "70vh", width: "100%", backgroundColor: "#343148FF" }}

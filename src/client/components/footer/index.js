@@ -4,6 +4,8 @@ import {
   EmailOutlined,
   PhoneOutlined,
   Instagram,
+  X,
+  GitHub,
 } from "@mui/icons-material";
 /**
  * Footer Component
@@ -24,7 +26,7 @@ const Footer = (props) => {
           <PhoneOutlined fontSize="extra-small" />
           &nbsp;Phone: +91 9646961419&nbsp;|&nbsp;
           <a
-            href="https://www.linkedin.com/in/yourprofile"
+            href="https://www.linkedin.com/in/sahil-kumar-aa868218b/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -32,11 +34,27 @@ const Footer = (props) => {
           </a>
           &nbsp;|&nbsp;
           <a
-            href="https://www.instagram.com/yourprofile"
+            href="https://www.instagram.com/sahil_kumar_dhiman07"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Instagram fontSize="extra-small" />
+          </a>
+          &nbsp;|&nbsp;
+          <a
+            href="https://www.twitter.com/sahilku42793054"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <X fontSize="extra-small" />
+          </a>
+          &nbsp;|&nbsp;
+          <a
+            href="https://github.com/Sahilkumar07021997"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHub fontSize="extra-small" />
           </a>
         </div>
       </div>

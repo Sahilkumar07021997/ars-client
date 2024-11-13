@@ -9,7 +9,7 @@ import {
   AccountBalance as AccountBalanceIcon,
   SmartToy as SmartToyIcon,
   LinkedIn as LinkedInIcon,
-  SmartScreenOutlined
+  SmartScreenOutlined,
 } from "@mui/icons-material";
 /**
  * RouteConfig Object
@@ -76,8 +76,9 @@ export const Tabs = {
     type: 0, // Primary,
     descriptionJsx: () => (
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac libero
-        non orci pharetra.
+        An income statement reveals a company’s profitability over a set period
+        by detailing revenue, expenses, and net profit, helping assess
+        operational performance.
       </p>
     ),
   },
@@ -91,8 +92,8 @@ export const Tabs = {
     type: 0, // Primary,
     descriptionJsx: () => (
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac libero
-        non orci pharetra.
+        A balance sheet provides a snapshot of assets, liabilities, and equity,
+        showing a company's financial position and stability at a specific time.
       </p>
     ),
   },
@@ -106,8 +107,9 @@ export const Tabs = {
     type: 0, // Primary,
     descriptionJsx: () => (
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac libero
-        non orci pharetra.
+        KPIs are measurable metrics that track a company's progress toward
+        strategic goals, covering areas like profitability, efficiency, and
+        customer satisfaction.
       </p>
     ),
   },
@@ -121,8 +123,9 @@ export const Tabs = {
     type: 0, // Primary,
     descriptionJsx: () => (
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac libero
-        non orci pharetra.
+        An executive summary offers a quick overview of a report, summarizing
+        key insights for faster decision-making by highlighting essential data
+        and recommendations.
       </p>
     ),
   },
