@@ -16,19 +16,19 @@ export const YearOptions = [2022, 2023, 2024];
  * @returns {Array<string>} Array of month names where 0 represents "all" and 1-12 represent January to December.
  */
 export const MonthOptions = [
-  "all", // 0
-  "january", // 1
-  "february", // 2
-  "march", // 3
-  "april", // 4
-  "may", // 5
-  "june", // 6
-  "july", // 7
-  "august", // 8
-  "september", // 9
-  "october", // 10
-  "november", // 11
-  "december", // 12
+  // "all", // 0
+  "January", // 1
+  "February", // 2
+  "March", // 3
+  "April", // 4
+  "May", // 5
+  "June", // 6
+  "July", // 7
+  "August", // 8
+  "September", // 9
+  "October", // 10
+  "November", // 11
+  "December", // 12
 ];
 
 /**
@@ -47,4 +47,15 @@ export const MonthOptionType = Object.fromEntries(
 export const DropDownType = {
   YearOptionType: 0,
   MonthOptionType: 1,
+  StatementOptionType: 2,
+};
+
+export const StatementOptions = [
+  { display: "Income Statement", id: 1, isCustomOption: true },
+  { display: "Balancesheet", id: 2, isCustomOption: true },
+];
+
+export const StatementOptionName = {
+  1: "Income Statement",
+  2: "Balancesheet",
 };

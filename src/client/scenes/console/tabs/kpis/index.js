@@ -45,7 +45,12 @@ const Kpis = (props) => {
           loadedYear
         ) : (
           <span
-            style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em" }}
+            style={{
+              color: "gray",
+              fontStyle: "italic",
+              fontSize: "0.9em",
+              marginLeft: "1em",
+            }}
           >
             Please select a year and load!
           </span>

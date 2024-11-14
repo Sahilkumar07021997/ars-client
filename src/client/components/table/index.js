@@ -70,22 +70,27 @@ export default function ReactVirtualizedTable(props) {
     direction: null,
   });
 
-  const handleSort = (columnKey) => {
+  const handleSort = (columnKey, dataType) => {
     let direction = "ascending";
     if (sortConfig.key === columnKey && sortConfig.direction === "ascending") {
       direction = "descending";
     }
 
     const sortedRows = [...rows].sort((a, b) => {
-      if (a[columnKey] < b[columnKey]) {
+      let valueA = a[columnKey];
+      let valueB = b[columnKey];
+      if (dataType === "money") {
+        valueA = parseFloat(valueA.replace(/[^0-9.-]+/g, ""));
+        valueB = parseFloat(valueB.replace(/[^0-9.-]+/g, ""));
+      }
+      if (valueA < valueB) {
         return direction === "ascending" ? -1 : 1;
       }
-      if (a[columnKey] > b[columnKey]) {
+      if (valueA > valueB) {
         return direction === "ascending" ? 1 : -1;
       }
       return 0;
     });
-
     setSortConfig({ key: columnKey, direction });
     setRows(sortedRows);
   };
@@ -109,7 +114,7 @@ export default function ReactVirtualizedTable(props) {
             cursor: "pointer",
             textWrap: "wrap",
           }}
-          onClick={() => handleSort(column.dataKeyName)}
+          onClick={() => handleSort(column.dataKeyName, column.dataType)}
         >
           {column.label}
           {sortConfig.key === column.dataKeyName ? (
@@ -139,7 +144,10 @@ export default function ReactVirtualizedTable(props) {
           sx={{
             fontSize: 12,
             fontWeight: "bold",
-            color: "#D7C49EFF",
+            color: Boolean(row.isDerivedLineItem) ? "#343148ff" : "#D7C49EFF",
+            backgroundColor: Boolean(row.isDerivedLineItem)
+              ? "rgb(137 130 188)"
+              : "#343148ff",
             borderRight: "2px solid #D7C49EFF", // Vertical lines between body cells
           }}
         >
@@ -148,7 +156,7 @@ export default function ReactVirtualizedTable(props) {
       ))}
     </React.Fragment>
   );
-console.log(rows);
+  console.log(rows);
   return (
     <Paper
       style={{ height: "70vh", width: "100%", backgroundColor: "#343148FF" }}

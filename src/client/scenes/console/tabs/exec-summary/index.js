@@ -5,6 +5,8 @@ import ReusableDropdown from "../../../../components/drop-down";
 import {
   DropDownType,
   MonthOptions,
+  StatementOptionName,
+  StatementOptions,
   YearOptions,
 } from "../../../../../constants/tab-toolbar-constants";
 import LoaderSpinner from "../../../../components/loading-spinner";
@@ -23,12 +25,14 @@ const ExecSummary = (props) => {
   const [selectedOption, setSelectedOption] = useState({
     year: null,
     month: null,
+    statementType: null,
   });
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadedYearMonth, setLoadedYearMonth] = useState({
     year: null,
     month: null,
+    statementType: null,
   });
 
   const handleSelect = (type, value) => {
@@ -38,6 +42,12 @@ const ExecSummary = (props) => {
         break;
       case DropDownType.YearOptionType:
         setSelectedOption((prevState) => ({ ...prevState, year: value }));
+        break;
+      case DropDownType.StatementOptionType:
+        setSelectedOption((prevState) => ({
+          ...prevState,
+          statementType: StatementOptionName[Number(value)],
+        }));
         break;
       default:
         return;
@@ -58,11 +68,18 @@ const ExecSummary = (props) => {
     <div className="exec-summary-container">
       <h2>
         {tabDisplay.toUpperCase()}:&nbsp;
-        {loadedYearMonth.month && loadedYearMonth.year ? (
-          `${loadedYearMonth.month} ${loadedYearMonth.year}`
+        {loadedYearMonth.month &&
+        loadedYearMonth.year &&
+        loadedYearMonth.statementType ? (
+          <span
+            style={{ color: "#d1900f", fontWeight: "bold", fontSize: "1.2em" }}
+          >
+            $ {loadedYearMonth.statementType} - {loadedYearMonth.month}&nbsp; 
+            {loadedYearMonth.year} $
+          </span>
         ) : (
           <span
-            style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em" }}
+            style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em", marginLeft: "1em" }}
           >
             Please select a year, month and load!
           </span>
@@ -80,6 +97,13 @@ const ExecSummary = (props) => {
             handleSelect(DropDownType.MonthOptionType, value)
           }
           disabledText={"Select month..."}
+        />
+        <ReusableDropdown
+          options={StatementOptions}
+          onSelect={(value) =>
+            handleSelect(DropDownType.StatementOptionType, value)
+          }
+          disabledText={"Select Statement type..."}
         />
         <ReusableButton
           buttonText="Generate"

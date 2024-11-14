@@ -5,6 +5,7 @@ import ReusableButton from "../../../../components/button";
 import ReusableDropdown from "../../../../components/drop-down";
 import { YearOptions } from "../../../../../constants/tab-toolbar-constants";
 import LoaderSpinner from "../../../../components/loading-spinner";
+import TableDataLabels from "../../../../components/table-data-label";
 /**
  * IncomeStatement Component
  *
@@ -69,7 +70,7 @@ const IncomeStatement = (props) => {
             loadedYear
           ) : (
             <span
-              style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em" }}
+              style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em" , marginLeft: "1em"}}
             >
               Please select a year and load!
             </span>
@@ -88,6 +89,7 @@ const IncomeStatement = (props) => {
             disabled={!selectedOption}
             onClick={onClickHandler}
           />
+          <TableDataLabels/>
         </div>
         <div className="income-statement-content">
           {loading ? (

@@ -5,6 +5,7 @@ import ReusableButton from "../../../../components/button";
 import ReusableDropdown from "../../../../components/drop-down";
 import { YearOptions } from "../../../../../constants/tab-toolbar-constants";
 import LoaderSpinner from "../../../../components/loading-spinner";
+import TableDataLabels from "../../../../components/table-data-label";
 /**
  * Balancesheet Component
  *
@@ -44,7 +45,12 @@ const Balancesheet = (props) => {
           loadedYear
         ) : (
           <span
-            style={{ color: "gray", fontStyle: "italic", fontSize: "0.9em" }}
+            style={{
+              color: "gray",
+              fontStyle: "italic",
+              fontSize: "0.9em",
+              marginLeft: "1em",
+            }}
           >
             Please select a year and load!
           </span>
@@ -63,6 +69,7 @@ const Balancesheet = (props) => {
           disabled={!selectedOption}
           onClick={onClickHandler}
         />
+        <TableDataLabels />
       </div>
       <div className="balancesheet-content">
         {loading ? (

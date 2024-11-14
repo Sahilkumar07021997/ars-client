@@ -61,18 +61,16 @@ const Footer = (props) => {
       <p>
         © {new Date().getFullYear()} All rights reserved to Sahil Kumar{" "}
         <sup>®</sup>
-      </p>
-
-      <p>
+        &nbsp;|&nbsp;
         <a
-          href="/privacy-policy"
+          // href="/privacy-policy"
           style={{ color: "white", textDecoration: "underline" }}
         >
           Privacy Policy
         </a>
         &nbsp;|&nbsp;
         <a
-          href="/terms-of-service"
+          // href="/terms-of-service"
           style={{ color: "white", textDecoration: "underline" }}
         >
           Terms of Service

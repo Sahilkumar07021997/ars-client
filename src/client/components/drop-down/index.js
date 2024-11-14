@@ -51,11 +51,23 @@ const ReusableDropdown = ({
       <option value="" disabled>
         {disabledText}
       </option>
-      {options.map((option, index) => (
-        <option key={index} value={option}>
-          {option}
-        </option>
-      ))}
+      {options.map((option, index) => {
+        // Check if option is an object with `isCustomOption`
+        if (typeof option === "object" && option.isCustomOption) {
+          return (
+            <option key={index} value={option.id}>
+              {option.display}
+            </option>
+          );
+        } else {
+          // Handle simple values like numbers or strings
+          return (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          );
+        }
+      })}
     </select>
   );
 };
