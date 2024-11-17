@@ -7,6 +7,7 @@
  * @returns {Array<number>} Array of years from 2014 to 2024.
  */
 export const YearOptions = [2022, 2023, 2024];
+
 /**
  * Month Names
  *
@@ -44,18 +45,37 @@ export const MonthOptionType = Object.fromEntries(
   MonthOptions.map((name, index) => [index, name])
 );
 
+/**
+ * DropDownType
+ * 
+ * @type {Object<string, number>}
+ * @property {number} YearOptionType - Represents the type for the Year dropdown (value: 0).
+ * @property {number} MonthOptionType - Represents the type for the Month dropdown (value: 1).
+ * @property {number} StatementOptionType - Represents the type for the Statement dropdown (value: 2).
+ */
 export const DropDownType = {
   YearOptionType: 0,
   MonthOptionType: 1,
   StatementOptionType: 2,
 };
 
+/**
+ * StatementOptions
+ * 
+ * @type {Array<{display: string, id: number, isCustomOption: boolean}>}
+ */
 export const StatementOptions = [
   { display: "Income Statement", id: 1, isCustomOption: true },
   { display: "Balancesheet", id: 2, isCustomOption: true },
 ];
 
+/**
+ * StatementOptionName
+ * 
+ * @type {Object<number, string>}
+ */
 export const StatementOptionName = {
   1: "Income Statement",
   2: "Balancesheet",
 };
+

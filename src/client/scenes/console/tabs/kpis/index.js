@@ -4,7 +4,13 @@ import DemoCharts from "./demo-charts/DemoCharts";
 import ReusableButton from "../../../../components/button";
 import ReusableDropdown from "../../../../components/drop-down";
 import LoaderSpinner from "../../../../components/loading-spinner";
-import { YearOptions } from "../../../../../constants/tab-toolbar-constants";
+import {
+  YearOptions,
+  MonthOptions,
+  StatementOptions,
+  DropDownType,
+  StatementOptionName,
+} from "../../../../../constants/tab-toolbar-constants";
 
 /**
  * Kpis Component
@@ -17,32 +23,86 @@ import { YearOptions } from "../../../../../constants/tab-toolbar-constants";
  */
 const Kpis = (props) => {
   const { tabDisplay } = useSelector((state) => state.console);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState({
+    year: null,
+    month: null,
+    statementType: null,
+  });
   const [loading, setLoading] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [loadedYear, setLoadedYear] = useState(null);
+  const [loadedYearMonth, setLoadedYearMonth] = useState({
+    year: null,
+    month: null,
+    statementType: null,
+  });
+  const [data, setData] = useState(null);
 
-  const handleSelect = (value) => {
-    setSelectedOption(value);
-    setLoaded(false); // Reset loaded state if a new selection is made
+  const handleSelect = (type, value) => {
+    switch (type) {
+      case DropDownType.MonthOptionType:
+        setSelectedOption((prevState) => ({ ...prevState, month: value }));
+        break;
+      case DropDownType.YearOptionType:
+        setSelectedOption((prevState) => ({ ...prevState, year: value }));
+        break;
+      case DropDownType.StatementOptionType:
+        setSelectedOption((prevState) => ({
+          ...prevState,
+          statementType: StatementOptionName[Number(value)],
+        }));
+        break;
+      default:
+        return;
+    }
   };
 
-  const onClickHandler = () => {
-    setLoadedYear(selectedOption);
+  const onClickHandler = async () => {
+    setLoadedYearMonth(selectedOption);
     setLoading(true);
-    setLoaded(false); // Reset loaded state when loading starts
-    setTimeout(() => {
+    setLoaded(false);
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      };
+      const response = await fetch(
+        `http://localhost:8000/exec-summary/report`,
+        {
+          method: "POST",
+          headers: headers,
+          body: JSON.stringify({
+            year: parseInt(selectedOption.year),
+            month: MonthOptions.indexOf(selectedOption.month) + 1,
+            statementType: selectedOption.statementType,
+          }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await response.json();
+      setData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
       setLoading(false);
       setLoaded(true);
-    }, 3000); // Simulate loading time
+    }
   };
 
   return (
     <div className="kpis-container">
       <h2>
         {tabDisplay.toUpperCase()}:&nbsp;
-        {loadedYear ? (
-          loadedYear
+        {loadedYearMonth.month &&
+        loadedYearMonth.year &&
+        loadedYearMonth.statementType ? (
+          <span
+            style={{ color: "#d1900f", fontWeight: "bold", fontSize: "1.2em" }}
+          >
+            $ {loadedYearMonth.statementType} - {loadedYearMonth.month}&nbsp;
+            {loadedYearMonth.year} $
+          </span>
         ) : (
           <span
             style={{
@@ -52,26 +112,50 @@ const Kpis = (props) => {
               marginLeft: "1em",
             }}
           >
-            Please select a year and load!
+            Please select a year, month and generate!
           </span>
         )}
       </h2>
       <div className="container-toolbar">
         <ReusableDropdown
           options={YearOptions}
-          onSelect={handleSelect}
+          onSelect={(value) => handleSelect(DropDownType.YearOptionType, value)}
           disabledText={"Select year..."}
+        />
+        <ReusableDropdown
+          options={MonthOptions}
+          onSelect={(value) =>
+            handleSelect(DropDownType.MonthOptionType, value)
+          }
+          disabledText={"Select month..."}
+        />
+        <ReusableDropdown
+          options={StatementOptions}
+          onSelect={(value) =>
+            handleSelect(DropDownType.StatementOptionType, value)
+          }
+          disabledText={"Select Statement type..."}
         />
         <ReusableButton
           buttonText="Load"
           width="auto"
           height="30px"
-          disabled={!selectedOption}
+          disabled={
+            !(
+              selectedOption.year &&
+              selectedOption.month &&
+              selectedOption.statementType
+            )
+          }
           onClick={onClickHandler}
         />
       </div>
       <div className="kpis-content">
-        {loading ? <LoaderSpinner /> : loaded ? <DemoCharts /> : null}
+        {loading ? (
+          <LoaderSpinner />
+        ) : loaded ? (
+          <DemoCharts data={data} selectedOption={selectedOption} />
+        ) : null}
       </div>
     </div>
   );
