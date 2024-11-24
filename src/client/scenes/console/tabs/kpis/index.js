@@ -66,14 +66,14 @@ const Kpis = (props) => {
         "Access-Control-Allow-Origin": "*",
       };
       const response = await fetch(
-        `http://localhost:8000/exec-summary/report`,
+        `http://localhost:8000/kpis/report`,
         {
           method: "POST",
           headers: headers,
           body: JSON.stringify({
             year: parseInt(selectedOption.year),
             month: MonthOptions.indexOf(selectedOption.month) + 1,
-            statementType: selectedOption.statementType,
+            // statementType: selectedOption.statementType,
           }),
         }
       );
@@ -95,12 +95,11 @@ const Kpis = (props) => {
       <h2>
         {tabDisplay.toUpperCase()}:&nbsp;
         {loadedYearMonth.month &&
-        loadedYearMonth.year &&
-        loadedYearMonth.statementType ? (
+        loadedYearMonth.year  ? (
           <span
             style={{ color: "#d1900f", fontWeight: "bold", fontSize: "1.2em" }}
           >
-            $ {loadedYearMonth.statementType} - {loadedYearMonth.month}&nbsp;
+            {loadedYearMonth.month}&nbsp;
             {loadedYearMonth.year} $
           </span>
         ) : (
@@ -129,13 +128,13 @@ const Kpis = (props) => {
           }
           disabledText={"Select month..."}
         />
-        <ReusableDropdown
+        {/* <ReusableDropdown
           options={StatementOptions}
           onSelect={(value) =>
             handleSelect(DropDownType.StatementOptionType, value)
           }
           disabledText={"Select Statement type..."}
-        />
+        /> */}
         <ReusableButton
           buttonText="Load"
           width="auto"
@@ -143,8 +142,7 @@ const Kpis = (props) => {
           disabled={
             !(
               selectedOption.year &&
-              selectedOption.month &&
-              selectedOption.statementType
+              selectedOption.month
             )
           }
           onClick={onClickHandler}

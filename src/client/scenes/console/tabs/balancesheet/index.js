@@ -21,20 +21,44 @@ const Balancesheet = (props) => {
   const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadedYear, setLoadedYear] = useState(null);
+  const [rows, setRows] = useState(null);
 
   const handleSelect = (value) => {
     setSelectedOption(value);
     console.log("Selected Option:", value);
   };
 
-  const onClickHandler = () => {
+  const onClickHandler = async () => {
     setLoadedYear(selectedOption);
     setLoading(true);
     setLoaded(false); // Reset loaded state when new load starts
-    setTimeout(() => {
+    // setTimeout(() => {
+    //   setLoading(false);
+    //   setLoaded(true);
+    // }, 5000); // Simulating loading time
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      };
+      const response = await fetch(
+        `http://localhost:8000/balance-sheet/report?year=${selectedOption}`,
+        {
+          method: "GET",
+          headers: headers,
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await response.json();
+      setRows(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
       setLoading(false);
       setLoaded(true);
-    }, 5000); // Simulating loading time
+    }
   };
 
   return (
@@ -75,7 +99,7 @@ const Balancesheet = (props) => {
         {loading ? (
           <LoaderSpinner />
         ) : loaded ? (
-          <ReactVirtualizedTable />
+          <ReactVirtualizedTable rows={rows} />
         ) : null}
       </div>
     </div>

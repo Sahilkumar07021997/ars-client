@@ -30,7 +30,7 @@ export const ColumnConfig = [
     dataType: "string", // Example data type for item name
   },
   {
-    width: 65,
+    width: 100,
     label: "January",
     columnDataKey: "30001",
     dataKeyName: "january",
@@ -38,7 +38,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "February",
     columnDataKey: "30002",
     dataKeyName: "february",
@@ -46,7 +46,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "March",
     columnDataKey: "30003",
     dataKeyName: "march",
@@ -54,7 +54,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "April",
     columnDataKey: "30004",
     dataKeyName: "april",
@@ -62,7 +62,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "May",
     columnDataKey: "30005",
     dataKeyName: "may",
@@ -70,7 +70,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "June",
     columnDataKey: "30006",
     dataKeyName: "june",
@@ -78,7 +78,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "July",
     columnDataKey: "30007",
     dataKeyName: "july",
@@ -86,7 +86,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "August",
     columnDataKey: "30008",
     dataKeyName: "august",
@@ -94,7 +94,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "September",
     columnDataKey: "30009",
     dataKeyName: "september",
@@ -102,7 +102,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "October",
     columnDataKey: "30010",
     dataKeyName: "october",
@@ -110,7 +110,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "November",
     columnDataKey: "30011",
     dataKeyName: "november",
@@ -118,7 +118,7 @@ export const ColumnConfig = [
     dataType: "money",
   },
   {
-    width: 65,
+    width: 100,
     label: "December",
     columnDataKey: "30012",
     dataKeyName: "december",
