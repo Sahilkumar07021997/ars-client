@@ -100,7 +100,7 @@ const Kpis = (props) => {
             style={{ color: "#d1900f", fontWeight: "bold", fontSize: "1.2em" }}
           >
             {loadedYearMonth.month}&nbsp;
-            {loadedYearMonth.year} $
+            {loadedYearMonth.year}
           </span>
         ) : (
           <span
@@ -147,6 +147,7 @@ const Kpis = (props) => {
           }
           onClick={onClickHandler}
         />
+        <h2>Work in progress...</h2>
       </div>
       <div className="kpis-content">
         {loading ? (

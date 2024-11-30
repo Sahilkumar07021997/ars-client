@@ -16,7 +16,7 @@ export const ColumnConfig = [
     dataType: "integer", // Example data type for serial number
   },
   {
-    width: 100,
+    width: 200,
     label: "Line Item Category",
     columnDataKey: "1001",
     dataKeyName: "lineItemCategory",

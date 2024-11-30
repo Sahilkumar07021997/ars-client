@@ -108,7 +108,9 @@ const multiBarChartSpec = {
   },
 };
 
-const DemoCharts = () => {
+const DemoCharts = (props) => {
+  const { data, selectedOption } = props;
+  const getFilteredData = data.filter(itm=>itm.isDerivedLineItem==1)
   return (
     <div className="demo-charts-grid">
       <div className="demo-charts-item">
