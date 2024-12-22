@@ -11,6 +11,7 @@ import {
   DropDownType,
   StatementOptionName,
 } from "../../../../../constants/tab-toolbar-constants";
+import { ApiConfig } from "../../../../../configuartions/api-config";
 
 /**
  * Kpis Component
@@ -66,7 +67,7 @@ const Kpis = (props) => {
         "Access-Control-Allow-Origin": "*",
       };
       const response = await fetch(
-        `http://localhost:8000/kpis/report`,
+        `${ApiConfig().api}/kpis/report`,
         {
           method: "POST",
           headers: headers,

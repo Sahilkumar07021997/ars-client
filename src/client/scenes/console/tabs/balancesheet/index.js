@@ -6,6 +6,7 @@ import ReusableDropdown from "../../../../components/drop-down";
 import { YearOptions } from "../../../../../constants/tab-toolbar-constants";
 import LoaderSpinner from "../../../../components/loading-spinner";
 import TableDataLabels from "../../../../components/table-data-label";
+import { ApiConfig } from "../../../../../configuartions/api-config";
 /**
  * Balancesheet Component
  *
@@ -42,7 +43,7 @@ const Balancesheet = (props) => {
         "Access-Control-Allow-Origin": "*",
       };
       const response = await fetch(
-        `http://localhost:8000/balance-sheet/report?year=${selectedOption}`,
+        `${ApiConfig().api}/balance-sheet/report?year=${selectedOption}`,
         {
           method: "GET",
           headers: headers,

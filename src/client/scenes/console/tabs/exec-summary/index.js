@@ -10,6 +10,7 @@ import {
   YearOptions,
 } from "../../../../../constants/tab-toolbar-constants";
 import LoaderSpinner from "../../../../components/loading-spinner";
+import { ApiConfig } from "../../../../../configuartions/api-config";
 
 /**
  * ExecSummary Component
@@ -66,7 +67,7 @@ const ExecSummary = (props) => {
         "Access-Control-Allow-Origin": "*",
       };
       const response = await fetch(
-        `http://localhost:8000/exec-summary/report`,
+        `${ApiConfig().api}/exec-summary/report`,
         {
           method: "POST",
           headers: headers,
