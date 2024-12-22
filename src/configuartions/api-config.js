@@ -8,7 +8,7 @@
 export const ApiConfig = () => {
 	const urls = {
 		home: 'http://localhost:3000',
-		api: 'http://localhost:8000',
+		api: 'https://ars-service.onrender.com', // 'http://localhost:8000' -- LOCAL
 		batchApi: 'http://xyz',
 		serviceName: 'ARS_SERVICE',
 	};
